@@ -23,3 +23,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
         redirectTo: '/'
     });
 }]);
+
+myApp.controller('HomeCtrl',function($scope) {
+    $scope.interval = 5000; // carousel animation interval
+});
