@@ -2,6 +2,7 @@ var myApp = angular.module('mobileWebApp', ['ngRoute','ui.bootstrap']);
 
 myApp.config(['$routeProvider', function($routeProvider) {
   
+
     $routeProvider.
     when('/phones', {
         templateUrl: 'views/phones.html',
@@ -60,3 +61,33 @@ myApp.controller('HomeCtrl',function($log, $scope) {
 	    }
 	];
 });
+
+
+myApp.directive('activeLink', ['$location', function (location) {
+	console.log('IN DIRECTIVE');
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs, controller) {
+        	console.log(element.children(':first').attr('href'));
+            // var clazz = attrs.activeLink;
+            var clazz = element.attr('active-link');
+                    	console.log('ACTIVELINK ' + element.attr('active-link'));
+
+	        // var path = attrs.href;
+	        var path = element.children(':first').attr('href');
+	        path = path.substring(2); //hack because path does not return including hashbang
+	        console.log('PATH' + path);
+	        scope.location = location;
+	        scope.$watch('location.path()', function (newPath) {
+	        	console.log('NEWPATH' + newPath);
+	        	
+	          if (path === newPath) {
+	          	console.log('EQUAL' + newPath + ' ' + clazz)
+	            element.addClass(clazz);
+	          } else {
+	            element.removeClass(clazz);
+	          }
+	        });
+        }
+    };
+}]);
