@@ -1,4 +1,4 @@
-var myApp = angular.module('mobileWebApp', ['ngRoute','ui.bootstrap']);
+var myApp = angular.module('mobileWebApp', ['ngRoute','ui.bootstrap', 'ngResource']);
 
 myApp.config(['$routeProvider', function($routeProvider) {
   
@@ -91,3 +91,17 @@ myApp.directive('activeLink', ['$location', function (location) {
         }
     };
 }]);
+
+myApp.factory('phoneFactory', function($resource){
+    return $resource(
+        '/Data/phones.json',
+        {},
+        {
+            get: {
+                method: 'GET',
+                params:{},
+                isArray:true
+            }
+        }
+    );
+});
