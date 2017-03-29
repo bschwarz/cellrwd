@@ -105,3 +105,9 @@ myApp.factory('phoneFactory', function($resource){
         }
     );
 });
+
+myApp.controller('PhoneCtrl', function($scope, phoneFactory){
+    phoneFactory.get(function(data) {
+        $scope.phones = data;
+    });
+});
