@@ -42,7 +42,7 @@
   </head>
 
   <body data-gr-c-s-loaded="true">
-
+    <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -64,8 +64,9 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-    <ng-view></ng-view>
-    <div class="container">
+    
+    <div class="container" id="content">
+      <ng-view></ng-view>
     </div><!-- /.container -->
 
 

@@ -1,5 +1,7 @@
+<label for="search" class="sr-only sr-only-focusable">Search Phones</label>
+<input class="form-control" type="text" ng-model="phonesSearch" typeahead="phone.title for phone in phones" placeholder="Search phones" id="search">
 <div ng-controller="PhoneCtrl" class="row">
-    <div ng-repeat="phone in phones" class="col-xs-6 col-md-3">
+    <div ng-repeat="phone in phones | filter:phonesSearch" class="col-xs-6 col-md-3">
         <div class="thumbnail">
             <div class="caption">
                 <h3>{{phone.title}} {{($phone.price)}}</h3>
