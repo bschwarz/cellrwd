@@ -1,8 +1,7 @@
 var myApp = angular.module('mobileWebApp', ['ngRoute','ui.bootstrap', 'ngResource']);
 
-myApp.config(['$routeProvider', function($routeProvider) {
+myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
   
-
     $routeProvider.
     when('/phones', {
         templateUrl: 'views/phones.html',
@@ -23,6 +22,7 @@ myApp.config(['$routeProvider', function($routeProvider) {
     otherwise({
         redirectTo: '/'
     });
+    $locationProvider.html5Mode({enabled: true, requireBase: false});
 }]);
 
 myApp.controller('HomeCtrl',function($log, $scope) {
