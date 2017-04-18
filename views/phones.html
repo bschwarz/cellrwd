@@ -1,11 +1,16 @@
 <label for="search" class="sr-only sr-only-focusable">Search Phones</label>
 <input class="form-control" type="text" ng-model="phonesSearch" typeahead="phone.title for phone in phones" placeholder="Search phones" id="search">
 <br/>
-<input ng-click="predicate='price'; reverse=false" type="radio" name="sortType" id="plh"><label for="plh">Price (Low to High)</label>
-<input ng-click="predicate='price'; reverse=true" type="radio" name="sortType" id="phl"><label for="phl">Price (High to Low)</label>
-<input ng-click="predicate='title'; reverse=false" type="radio" name="sortType" id="taz"><label for="taz">Name (A-Z)</label>
-<input ng-click="predicate='title'; reverse=true" type="radio" name="sortType" id="tza"><label for="tza">Name (Z-A)</label>
-<br/>
+
+<div class="dropdown">
+    <a href="#" data-toggle="dropdown" class="dropdown-toggle">Sort by:  <b class="caret"></b></a>
+    <ul class="dropdown-menu">
+        <li><a href="#" ng-click="predicate='price'; reverse=false">Price (Low to High)</a></li>
+        <li><a href="#" ng-click="predicate='price'; reverse=true">Price (High to Low)</a></li>
+        <li><a href="#" ng-click="predicate='title'; reverse=false">Name (A-Z)</a></li>
+        <li><a href="#" ng-click="predicate='title'; reverse=true">Name (Z-A)</a></li>
+    </ul>
+</div>
 
 <div ng-controller="PhoneCtrl" class="row">
     <div ng-repeat="phone in phones | filter:phonesSearch | orderBy:predicate:reverse" class="col-xs-6 col-md-3">
