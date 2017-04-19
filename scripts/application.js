@@ -9,7 +9,7 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
     }).
     when('/plans', {
         templateUrl: 'views/plans.html',
-        controller: 'PlansCtrl'
+        controller: 'PlanCtrl'
     }).
     when('/cart', {
         templateUrl: 'views/cart.html',
@@ -92,6 +92,7 @@ myApp.directive('activeLink', ['$location', function (location) {
     };
 }]);
 
+// Factory for the data for the phones view
 myApp.factory('phoneFactory', function($resource){
     return $resource(
         '/Data/phones.json',
@@ -106,8 +107,29 @@ myApp.factory('phoneFactory', function($resource){
     );
 });
 
+// Controller for the phones view
 myApp.controller('PhoneCtrl', function($scope, phoneFactory){
     phoneFactory.get(function(data) {
         $scope.phones = data;
+    });
+});
+
+// Factory for the data for the plans view
+myApp.factory('planFactory', function($resource) {
+    return $resource(
+        '/Data/plans.json', {}, {
+        get: {
+            method: 'GET',
+            params: {},
+                isArray: true
+            }
+        }
+    );
+});
+
+// Controller for the plans view
+myApp.controller('PlanCtrl', function($scope, planFactory) {
+    planFactory.get(function(data) {
+        $scope.plans = data;
     });
 });

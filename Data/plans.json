@@ -1,0 +1,21 @@
+[ 
+
+	{ "id"    : 0,
+	    "name"   : "Basic",
+	    "mins"   : "500",
+	    "texts" : "500",
+	    "data"  : "100MB",
+	    "price" : "$40" },
+  { "id"    : 1,
+	    "name"   : "Large",
+	    "mins"   : "600",
+	    "texts" : "600",
+	    "data"  : "200MB",
+	    "price" : "$70" },
+  { "id"    : 2,
+	    "name"   : "Extra Large",
+	    "mins"   : "700",
+	    "texts" : "700",
+	    "data"  : "300MB",
+	    "price" : "$90" }    
+]

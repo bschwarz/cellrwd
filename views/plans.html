@@ -1,1 +1,16 @@
-<h1>Hello from Plans</h1>
+<div ng-controller="PlanCtrl">
+    <uib-accordion close-others="true">
+        <div uib-accordion-group heading="{{plan.name}}({{plan.price}}/mo)" ng-repeat="plan in plans">
+            <dl class="dl-horizontal">
+                <dt>Minutes</dt>
+                <dd>{{plan.mins}}</dd>
+                <dt>Texts</dt>
+                <dd>{{plan.texts}}</dd>
+                <dt>Data</dt>
+                <dd>{{plan.data}}</dd>
+            </dl>
+ 
+            <p><a href="#" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</a></p>
+        </div>
+    </uib-accordion>
+</div>
