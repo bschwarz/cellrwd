@@ -55,10 +55,12 @@ describe('HomeCtrl', function() {
         )
     );
      
+    // test to check the carousel interval
     it('should have 5000 carousel interval', function(){
         expect(scope.interval).toBe(5000);
     });
 
+    // test to check the number of slides
     it('should be 4 slides', function(){
         expect(scope.slides.length).toBe(4);
     });
@@ -71,4 +73,9 @@ describe('HomeCtrl', function() {
         expect($route.routes['/phones'].controller).toBe('PhoneCtrl');
         expect($route.routes['/phones'].templateUrl).toEqual('views/phones.html');
     }));
+
+    // test for angular element that gets injected
+    it('should have 4 anchors',function(){
+        expect(ele.find('li a').length).toBe(4);
+    });
 });
