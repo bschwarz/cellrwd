@@ -78,4 +78,12 @@ describe('HomeCtrl', function() {
     it('should have 4 anchors',function(){
         expect(ele.find('li a').length).toBe(4);
     });
+
+    // Test to verify the active CSS class
+    it('should set active on parent li', inject(function($location) {
+        $location.path('/'); //location manually changed to /
+        scope.$digest();
+        //The first child is Home, so when we navigate to home, the link should be active on #/
+         expect(ele.find('li').children('a')[0].getAttribute('href')).toEqual('/');
+    }));
 });
