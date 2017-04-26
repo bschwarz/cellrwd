@@ -43,5 +43,7 @@ describe('HomeCtrl', function() {
         expect($route.routes['/'].controller).toBe('HomeCtrl');
         expect($route.routes['/'].templateUrl).toEqual('views/home.html');
         expect($route.routes[null].redirectTo).toEqual('/');
+        expect($route.routes['/phones'].controller).toBe('PhoneCtrl');
+        expect($route.routes['/phones'].templateUrl).toEqual('views/phones.html');
     }));
 });
