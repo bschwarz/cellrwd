@@ -3,7 +3,7 @@ describe('HomeCtrl', function() {
     var scope; //we'll use this scope in our tests
     //mock Application to allow us to inject our own dependencies
     beforeEach(
-        angular.mock.module('application')
+        angular.mock.module('mobileWebApp')
         //use the name of your application found in your application.js
         //Line: var application = angular.module('<YourApplicationName>'
     );
@@ -15,11 +15,16 @@ describe('HomeCtrl', function() {
                 //create an empty scope
                 scope = $rootScope.$new();
            
+                // $httpBackend 
+                //     .when('GET', 'data/phones.json') 
+                //     .respond([{},{},{},{}]);
+
                 //declare the controller and inject our empty scope
                 $controller('HomeCtrl', {
                     $scope: scope
                 });
- 
+                // scope.$digest(); 
+                // $httpBackend.flush();
                 //use your controller's name
             }
         )
