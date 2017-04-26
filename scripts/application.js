@@ -30,6 +30,7 @@ myApp.controller('HomeCtrl',function($log, $scope) {
     $scope.interval = 5000; // carousel animation interval
     // $scope.active = 0;
     //carousel slide info
+    // Use the phoneFactory here too!!!!!
 	$scope.slides = [
 	    {
 	    	id: 0,
