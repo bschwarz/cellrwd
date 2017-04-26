@@ -37,4 +37,11 @@ describe('HomeCtrl', function() {
     it('should be 4 slides', function(){
         expect(scope.slides.length).toBe(4);
     });
+
+    // This tests the routing for home  
+    it('should map routes to controllers', inject(function($route) {
+        expect($route.routes['/'].controller).toBe('HomeCtrl');
+        expect($route.routes['/'].templateUrl).toEqual('views/home.html');
+        expect($route.routes[null].redirectTo).toEqual('/');
+    }));
 });
