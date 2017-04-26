@@ -1,6 +1,7 @@
 'use strict';
 describe('HomeCtrl', function() {
     var scope; //we'll use this scope in our tests
+    var ele;
     //mock Application to allow us to inject our own dependencies
     beforeEach(
         angular.mock.module('mobileWebApp')
@@ -25,6 +26,30 @@ describe('HomeCtrl', function() {
                 });
                 // scope.$digest(); 
                 // $httpBackend.flush();
+                //use your controller's name
+            }
+        )
+    );
+
+    beforeEach(
+        angular.mock.inject(
+            function($rootScope, $controller, $compile, $location) {
+                ele = angular.element('<div id="navbar" class="collapse navbar-collapse">' +
+                    '<ul class="nav navbar-nav" >' +
+                    '<li active-link="active"> <a href="/">Home</a></li>' +
+                    '<li active-link="active"> <a href="/phones">Phones</a></li>' +
+                    '<li active-link="active"> <a href="/plans">Plans</a></li>' +
+                    '<li active-link="active"> <a href="/cart">Cart</a></li>' +
+                    '</ul>');            
+                //create an empty scope
+                scope = $rootScope.$new();
+                //add this element to the scope.
+                $compile(ele)(scope);
+                scope.$digest();
+                //declare the controller and inject our empty scope
+                $controller('HomeCtrl', {
+                    $scope: scope
+                });
                 //use your controller's name
             }
         )
