@@ -25,5 +25,11 @@ describe('HomeCtrl', function() {
         )
     );
      
-    // tests start here
+    it('should have 5000 carousel interval', function(){
+        expect(scope.interval).toBe(5000);
+    });
+
+    it('should be 4 slides', function(){
+        expect(scope.slides.length).toBe(4);
+    });
 });
