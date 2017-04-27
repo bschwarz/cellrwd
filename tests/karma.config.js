@@ -21,6 +21,7 @@ module.exports = function(config) {
         '../js/angular-route.js',
         '../js/angular-mocks.js',
         '../js/ui-bootstrap-tpls-2.5.0.js',
+        '../js/angular-local-storage.js',
         '../scripts/*.js',
         '*.tests.js'
     ],

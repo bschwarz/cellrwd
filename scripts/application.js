@@ -1,4 +1,4 @@
-var myApp = angular.module('mobileWebApp', ['ngRoute','ui.bootstrap', 'ngResource']);
+var myApp = angular.module('mobileWebApp', ['ngRoute','ui.bootstrap', 'ngResource', 'LocalStorageModule']);
 
 myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
   
