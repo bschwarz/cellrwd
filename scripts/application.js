@@ -109,10 +109,14 @@ myApp.factory('phoneFactory', function($resource){
 });
 
 // Controller for the phones view
-myApp.controller('PhoneCtrl', function($scope, phoneFactory){
+myApp.controller('PhoneCtrl', function($scope, phoneFactory, CartProperties){
     phoneFactory.get(function(data) {
         $scope.phones = data;
     });
+
+    $scope.addPhone = function(item, cost) {
+    	CartProperties.addToCart(item, cost);
+    };
 });
 
 // Factory for the data for the plans view
@@ -137,19 +141,20 @@ myApp.controller('PlanCtrl', function($scope, planFactory) {
 
 
 // service to access local Local storage
-myApp.service('CartProperties', function(LocalStorageService) {
+myApp.service('CartProperties', function(localStorageService) {
 	return {
 		addToCart: function(item,cost) {
-		if (!localStorageService.get('cart')) {	
-			var cart = [];
-			// cart.push({"item": item, "cost",: cost});
-			// localStorageService.set('cart', cart);
-		} else {
-			var cart = localStorageService.get('cart');
-			// cart.push({"item": item, "cost",: cost});
-			// localStorageService.set('cart', cart);
+			if (!localStorageService.get('cart')) {	
+				var cart = [];
+				// cart.push({"item": item, "cost": cost});
+				// localStorageService.set('cart', cart);
+			} else {
+				var cart = localStorageService.get('cart');
+				// cart.push({"item": item, "cost": cost});
+				// localStorageService.set('cart', cart);
+			}
+			cart.push({"item": item, "cost": cost});
+			localStorageService.set('cart', cart);
 		}
-		cart.push({"item": item, "cost",: cost});
-		localStorageService.set('cart', cart);
 	}
 })
