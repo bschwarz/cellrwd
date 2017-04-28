@@ -134,3 +134,22 @@ myApp.controller('PlanCtrl', function($scope, planFactory) {
         $scope.plans = data;
     });
 });
+
+
+// service to access local Local storage
+myApp.service('CartProperties', function(LocalStorageService) {
+	return {
+		addToCart: function(item,cost) {
+		if (!localStorageService.get('cart')) {	
+			var cart = [];
+			// cart.push({"item": item, "cost",: cost});
+			// localStorageService.set('cart', cart);
+		} else {
+			var cart = localStorageService.get('cart');
+			// cart.push({"item": item, "cost",: cost});
+			// localStorageService.set('cart', cart);
+		}
+		cart.push({"item": item, "cost",: cost});
+		localStorageService.set('cart', cart);
+	}
+})
