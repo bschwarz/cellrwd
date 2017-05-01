@@ -159,6 +159,22 @@ myApp.service('CartProperties', function(localStorageService) {
 			}
 			cart.push({"item": item, "cost": cost});
 			localStorageService.set('cart', cart);
+		},
+		getCart: function() {
+			return localStorageService.get('cart');
+		},
+		setCart: function(array) {
+			localStorageService.set('cart', array);
 		}
 	}
-})
+});
+
+// controller for the shopping cart
+myApp.controller('CartCtrl', function($scope, CartProperties) {
+	$scope.cart = CartProperties.getCart();
+
+	$scope.remove = function(array, index) {
+		array.splice(index, 1);
+		CartProperties.setCart(array);
+	};
+});

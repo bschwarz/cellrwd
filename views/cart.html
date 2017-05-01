@@ -1,1 +1,19 @@
-<h1>Hello from Cart</h1>
+<div class="container" ng-controller="CartCtrl">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Item</th>
+				<th>Cost</th>
+				<th>Remove</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="item in cart track by $index">
+				<td>{{item.item}}</td>
+				<td>{{item.cost}}</td>
+				<td><a ng-click="remove(cart, $index)">Remove</a></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
