@@ -133,10 +133,14 @@ myApp.factory('planFactory', function($resource) {
 });
 
 // Controller for the plans view
-myApp.controller('PlanCtrl', function($scope, planFactory) {
+myApp.controller('PlanCtrl', function($scope, planFactory, CartProperties) {
     planFactory.get(function(data) {
         $scope.plans = data;
     });
+
+    $scope.addPlan = function(item, cost) {
+    	CartProperties.addToCart(item, cost);
+    };
 });
 
 
