@@ -20,7 +20,7 @@ module.exports = function(grunt) {
         },
         watch: {
             project: {
-                files: ['css/style.css'],
+                files: ['scripts/application.js', 'css/style.css'],
                 tasks: ['build'],
                 options: {
                     livereload: {
@@ -38,6 +38,13 @@ module.exports = function(grunt) {
                     'scripts/application.annotated.js':['scripts/application.js']
                 }
             }
+          },
+          uglify: {
+            project: {
+                files: {
+                    'scripts/application.min.js':'scripts/application.annotated.js'
+                }
+            }
           }
     });
 
@@ -46,7 +53,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-concat');
 
-    grunt.registerTask('build', ['cssmin', 'ngAnnotate']);
+    grunt.registerTask('build', ['cssmin', 'ngAnnotate', 'uglify']);
     grunt.registerTask('server', ['connect']);
     grunt.registerTask('test', ['build', 'karma']);
 };
