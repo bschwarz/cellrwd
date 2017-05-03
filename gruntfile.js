@@ -39,14 +39,14 @@ module.exports = function(grunt) {
                 }
             }
           },
-          uglify: {
+        uglify: {
             project: {
                 files: {
                     'scripts/application.min.js':'scripts/application.annotated.js'
                 }
             }
-          },
-          'string-replace': {
+        },
+        'string-replace': {
                 dev: {
                     files: {
                       'index.html': 'index.tpl.html'
@@ -72,8 +72,30 @@ module.exports = function(grunt) {
                       }
                       ]
                     }
-                }
+                },
+        },
+        copy: {
+            main: {
+                files: [
+                    {
+                        cwd: 'scripts/vendor/',
+                        filter: 'isFile',
+                        expand: true,
+                        flatten: true,
+                        src: ['*/*.min.js'],
+                        dest: 'dist/js'
+                    },
+                    {
+                        cwd: 'scripts/vendor/',
+                        filter: 'isFile',
+                        expand: true,
+                        flatten: true,
+                        src: ['*/dist/*.min.js'],
+                        dest: 'dist/js'
+                    }
+                ]
             }
+        }
     });
 
     grunt.loadNpmTasks('grunt-contrib-connect');
@@ -83,9 +105,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-ng-annotate');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-string-replace');
+    grunt.loadNpmTasks('grunt-contrib-copy');
 
     var target = grunt.option('target') || 'dev';
     grunt.registerTask('build', ['cssmin', 'ngAnnotate', 'uglify', 'string-replace:' + target]);
     grunt.registerTask('server', ['connect']);
+    grunt.registerTask('cp', ['copy']);
     grunt.registerTask('test', ['build', 'karma']);
 };
