@@ -29,11 +29,15 @@ module.exports = function(grunt) {
                 }
             }
         },
-        concat: {
-            basic: {
-              src: ['scripts/application.js'],
-              dest: 'dist/app.js',
+        ngAnnotate: {
+            options: {
+              singleQuotes: true
             },
+            mobileWebApp: {
+                files: {
+                    'scripts/application.annotated.js':['scripts/application.js']
+                }
+            }
           }
     });
 
@@ -42,7 +46,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-concat');
 
-    grunt.registerTask('build', ['cssmin']);
+    grunt.registerTask('build', ['cssmin', 'ngAnnotate']);
     grunt.registerTask('server', ['connect']);
     grunt.registerTask('test', ['build', 'karma']);
 };
